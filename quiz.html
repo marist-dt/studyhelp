@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<!-- Declares this document as an HTML5 webpage -->
+
+<html>
+<!-- Root element that contains the entire webpage -->
+
+<head>
+
+<!-- Title shown on the browser tab -->
+<title>Quiz</title>
+
+<!-- Links the external CSS stylesheet -->
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+     HEADER
+========================================== -->
+
+<header>
+
+<!-- Container that holds the logo and title -->
+<div class="header-container">
+
+<!-- Logo section -->
+<div class="logo-area">
+
+<!-- Website logo -->
+<img src="images/logo.jpg" alt="Study Help Logo">
+
+<!-- Page heading -->
+<h1>Quiz</h1>
+
+</div>
+
+</header>
+
+<!-- ==========================================
+     NAVIGATION BAR
+========================================== -->
+
+<nav>
+
+<!-- Navigation links -->
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="Challanges.html">Challenges</a>
+<a href="quiz.html">Quiz</a>
+<a href="techniques.html">Techniques</a>
+<a href="resources.html">Resources</a>
+
+</div>
+
+</nav>
+
+<!-- ==========================================
+     MAIN CONTENT
+========================================== -->
+
+<main>
+
+<!-- Creates the two-column layout -->
+<div class="quiz-layout">
+
+<!-- ==========================================
+     OLLIE SIDEBAR
+========================================== -->
+
+<div class="ollie-panel">
+
+<!-- Ollie mascot -->
+<img src="images/ollie.png" alt="Ollie the Owl">
+
+<!-- Welcome message -->
+<div class="ollie-message">
+
+<h3>🦉 Ollie Says...</h3>
+
+<p>
+Hi! I'm Ollie.
+</p>
+
+<p>
+Answer these questions honestly and I'll build a personalised study plan for you.
+</p>
+
+<p>
+Don't worry if you're not sure what study methods work best. That's exactly what this quiz is for!
+</p>
+
+</div>
+
+</div>
+
+<!-- ==========================================
+     QUIZ QUESTIONS
+========================================== -->
+
+<!-- Holds all quiz questions -->
+<div id="quizBox">
+
+<!-- ======================
+     Question 1
+====================== -->
+
+<div class="quiz-question">
+
+<label>
+1. Do you often forget information a few days after learning it?
+</label>
+
+<!-- Dropdown answer -->
+<select id="q1">
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+</div>
+
+<!-- ======================
+     Question 2
+====================== -->
+
+<div class="quiz-question">
+
+<label>
+2. Do diagrams, colours, or pictures help you understand information better?
+</label>
+
+<select id="q2">
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+</div>
+
+<!-- ======================
+     Question 3
+====================== -->
+
+<div class="quiz-question">
+
+<label>
+3. Do you find it difficult to stay focused while studying?
+</label>
+
+<select id="q3">
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+</div>
+
+<!-- ======================
+     Question 4
+====================== -->
+
+<div class="quiz-question">
+
+<label>
+4. Do you usually leave studying until close to a test or exam?
+</label>
+
+<select id="q4">
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+</div>
+
+<!-- ======================
+     Question 5
+====================== -->
+
+<div class="quiz-question">
+
+<label>
+5. Do you prefer studying by yourself rather than in groups?
+</label>
+
+<select id="q5">
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+</div>
+
+<!-- ======================
+     Question 6
+====================== -->
+
+<div class="quiz-question">
+
+<label>
+6. Do you learn best when you explain ideas to someone else?
+</label>
+
+<select id="q6">
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+</div>
+
+<!-- ======================
+     Question 7
+====================== -->
+
+<div class="quiz-question">
+
+<label>
+7. Do you find Maths or Science subjects challenging?
+</label>
+
+<select id="q7">
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+</div>
+
+<!-- ======================
+     Question 8
+====================== -->
+
+<div class="quiz-question">
+
+<label>
+8. Do you regularly make notes, flashcards, or summaries?
+</label>
+
+<select id="q8">
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+</div>
+
+<!-- ======================
+     Question 9
+====================== -->
+
+<div class="quiz-question">
+
+<label>
+9. Do you often study for long periods without taking breaks?
+</label>
+
+<select id="q9">
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+</div>
+
+<!-- ======================
+     Question 10
+====================== -->
+
+<div class="quiz-question">
+
+<label>
+10. Do you currently have a regular study routine?
+</label>
+
+<select id="q10">
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+</div>
+
+<!-- Button that runs the JavaScript quiz -->
+<button onclick="getResult()" class="quiz-button">
+Generate My Study Plan
+</button>
+
+</div>
+
+</div>
+
+<!-- ==========================================
+     QUIZ RESULTS
+========================================== -->
+
+<!-- Hidden until the user completes the quiz -->
+<div class="result-card" id="resultBox" style="display:none">
+
+<!-- Result heading -->
+<h2>🦉 Ollie's Personal Recommendation:</h2>
+
+<!-- JavaScript inserts the personalised message here -->
+<p id="resultText"></p>
+
+<!-- Study tips heading -->
+<h3>🎯 Your Study Tips</h3>
+
+<!-- JavaScript inserts the study tips here -->
+<ul id="tips"></ul>
+
+<!-- Restarts the quiz -->
+<button onclick="location.reload()" class="quiz-button">
+Take Quiz Again
+</button>
+
+</div>
+
+</main>
+
+<!-- Links the JavaScript file that calculates the quiz result -->
+<script src="js/quiz.js"></script>
+
+</body>
+
+</html>

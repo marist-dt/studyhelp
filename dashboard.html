@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html>
+<!-- Root element that contains the entire webpage -->
+
+<head>
+
+<!-- Character encoding -->
+<meta charset="UTF-8">
+
+<!-- Makes the webpage responsive on different devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Title shown on the browser tab -->
+<title>Learning Dashboard</title>
+
+<!-- Links the external CSS stylesheet -->
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* HEADER */
+
+/* Styles the page header */
+header{
+    display:flex;
+    align-items:left;
+    justify-content:left;
+    gap:12px;
+}
+
+/* Logo image */
+header img{
+    width:55px;
+}
+
+/* PAGE LAYOUT */
+
+/* Creates the two-column dashboard layout */
+.dashboard{
+    display:flex;
+    gap:40px;
+}
+
+/* Main content section */
+.panel{
+    flex:3;
+}
+
+/* CARDS*/
+
+/* Dashboard cards */
+.card{
+    background:white;
+    border-radius:25px;
+    padding:20px;
+    margin-bottom:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    border:3px solid white;
+}
+
+/* Hover effect */
+.card:hover{
+    border:3px solid #F2B35D;
+}
+
+/* Statistics layout */
+.stat-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+/* Small statistic cards */
+.stat{
+    background:#9BC7D8;
+    padding:15px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+/* Large level card */
+.big-stat{
+    background:#A8C8B8;
+    padding:20px;
+    border-radius:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+/* BUTTON*/
+
+button{
+    background:#F2B35D;
+    border:none;
+    padding:10px 14px;
+    border-radius:20px;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+}
+
+/* Button hover effect */
+button:hover{
+    opacity:0.9;
+}
+
+/*  PROGRESS BAR */
+
+/* Background of the progress bar */
+.progress-bar{
+    width:100%;
+    background:#eee;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+/* Orange fill showing XP progress */
+.progress-fill{
+    height:20px;
+    width:0%;
+    background:#F2B35D;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER-->
+
+<header>
+
+<!-- Website logo -->
+<img src="images/logo.jpg">
+
+<!-- Page heading -->
+<h1>Learning Dashboard</h1>
+
+</header>
+
+<!-- NAVIGATION BAR -->
+
+<nav>
+
+<div class="nav-links">
+
+<!-- Navigation links -->
+<a href="index.html">Home</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="Challanges.html">Challenges</a>
+<a href="quiz.html">Quiz</a>
+<a href="techniques.html">Techniques</a>
+<a href="resources.html">Resources</a>
+
+</div>
+
+</nav>
+
+<!-- MAIN CONTENT-->
+
+<main class="section">
+
+<!-- Dashboard layout -->
+<div class="dashboard">
+
+<!-- OLLIE PANEL-->
+
+<div class="ollie-panel">
+
+<!-- Ollie mascot -->
+<img src="images/ollie.png">
+
+<!-- Ollie's message -->
+<div class="ollie-message">
+
+<h3>🦉 Ollie Coach</h3>
+
+<!-- JavaScript updates this text -->
+<p id="ollieText">
+Welcome back. Start your learning journey.
+</p>
+
+</div>
+
+</div>
+
+<!-- DASHBOARD PANEL-->
+
+<div class="panel">
+
+<!-- Displays current level and XP -->
+<div class="big-stat">
+Level: <span id="level">1</span> | XP: <span id="xp">0</span>
+</div>
+
+<!-- Statistics -->
+<div class="stat-box">
+
+<div class="stat">
+Challenges Completed: <span id="challenges">0</span>
+</div>
+
+<div class="stat">
+Streak: <span id="streak">0</span> days
+</div>
+
+</div>
+
+<!-- Progress card -->
+<div class="card">
+
+<h3>📊 Progress to Next Level</h3>
+
+<div class="progress-bar">
+<div class="progress-fill" id="bar"></div>
+</div>
+
+<!-- JavaScript inserts XP remaining -->
+<p id="nextLevelText"></p>
+
+</div>
+
+<!-- Recommendation card -->
+<div class="card">
+
+<h3>🎯 Recommended Action</h3>
+
+<!-- JavaScript inserts recommendation -->
+<p id="recommendation"></p>
+
+</div>
+
+<!-- Daily mission card -->
+<div class="card">
+
+<h3>🔥 Daily Mission</h3>
+
+<!-- JavaScript inserts today's mission -->
+<p id="mission"></p>
+
+<!-- Adds XP when completed -->
+<button onclick="completeMission()">
+Mark Complete
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<!-- JAVASCRIPT-->
+
+<script>
+
+/* LOAD SAVED DATA*/
+
+/* Loads saved XP */
+let xp = parseInt(localStorage.getItem("xp")) || 0;
+
+/* Loads completed challenges */
+let completed = JSON.parse(localStorage.getItem("completed")) || [];
+
+/* Loads the last visit date */
+let lastVisit = localStorage.getItem("lastVisit") || null;
+
+/* STREAK SYSTEM*/
+
+/* Gets today's date */
+let today = new Date().toDateString();
+
+/* Loads saved streak */
+let streak = parseInt(localStorage.getItem("streak")) || 0;
+
+/* Increases streak if this is a new day */
+if(lastVisit !== today){
+    streak += 1;
+    localStorage.setItem("lastVisit", today);
+    localStorage.setItem("streak", streak);
+}
+
+/* LEVEL SYSTEM*/
+
+/* Calculates current level */
+let level = Math.floor(xp / 50) + 1;
+
+/* Calculates percentage towards next level */
+let progress = (xp % 50) / 50 * 100;
+
+/* UPDATE PAGE*/
+
+document.getElementById("level").innerText = level;
+document.getElementById("xp").innerText = xp;
+document.getElementById("challenges").innerText = completed.length;
+document.getElementById("streak").innerText = streak;
+
+/* Updates progress bar */
+document.getElementById("bar").style.width = progress + "%";
+
+/* Shows XP needed for next level */
+document.getElementById("nextLevelText").innerText =
+"Need " + (50 - (xp % 50)) + " XP to reach next level";
+
+/* RECOMMENDATIONS*/
+
+let recommendation = "";
+
+/* Chooses recommendation based on level */
+if(level === 1){
+recommendation = "Start with Active Recall and short study sessions.";
+}
+else if(level === 2){
+recommendation = "Add spaced repetition and practice testing.";
+}
+else{
+recommendation = "Focus on exam simulation and teaching others.";
+}
+
+/* Displays recommendation */
+document.getElementById("recommendation").innerText = recommendation;
+
+/* DAILY MISSION */
+
+/* Possible daily missions */
+let missions = [
+"Complete 1 Active Recall task",
+"Do a 25-minute Pomodoro session",
+"Review flashcards",
+"Write a blurting page",
+"Do a past paper question"
+];
+
+/* Picks a random mission */
+let mission = missions[Math.floor(Math.random()*missions.length)];
+
+/* Displays the mission */
+document.getElementById("mission").innerText = mission;
+
+/* Adds XP when mission is completed */
+function completeMission(){
+
+xp += 10;
+
+localStorage.setItem("xp", xp);
+
+/* Reloads the page */
+location.reload();
+
+}
+
+/* OLLIE MESSAGES */
+
+/* Possible motivational messages */
+let messages = [
+"Good to see you back.",
+"Consistency builds mastery.",
+"Small progress adds up.",
+"You’re improving steadily."
+];
+
+/* Displays a random message */
+document.getElementById("ollieText").innerText =
+messages[Math.floor(Math.random()*messages.length)];
+
+</script>
+
+</body>
+
+</html>

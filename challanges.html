@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<!-- Declares this document as HTML5 -->
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Challenge Mode</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* HEADER */
+header{
+    display:flex;
+    align-items:left;
+    justify-content:left;
+    gap:12px;
+}
+
+header img{
+    width:55px;
+}
+
+/* PAGE LAYOUT */
+.quiz-layout{
+    display:flex;
+    gap:40px;
+}
+
+.challenge-container{
+    flex:3;
+}
+
+/* CHALLENGE CARDS */
+.challenge-card{
+    background:white;
+    border-radius:25px;
+    margin-bottom:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    border:3px solid white;
+    overflow:hidden;
+}
+
+.challenge-card:hover{
+    border:3px solid #F2B35D;
+}
+
+.challenge-card summary{
+    padding:18px;
+    font-weight:bold;
+    cursor:pointer;
+    list-style:none;
+}
+
+.challenge-card summary::-webkit-details-marker{
+    display:none;
+}
+
+.challenge-content{
+    padding:0 20px 20px;
+}
+
+.challenge-item{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+}
+
+/* PROGRESS BOXES */
+.progress-box{
+    background:#9BC7D8;
+    padding:18px;
+    border-radius:20px;
+    margin-bottom:15px;
+    font-weight:bold;
+}
+
+.level-box{
+    background:#A8C8B8;
+    padding:18px;
+    border-radius:20px;
+    margin-bottom:15px;
+    font-weight:bold;
+}
+
+.badge-box{
+    background:#F4C6A8;
+    padding:18px;
+    border-radius:20px;
+    margin-bottom:15px;
+    font-weight:bold;
+}
+
+/* BUTTONS */
+button{
+    background:#F2B35D;
+    border:none;
+    padding:10px 14px;
+    border-radius:20px;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<img src="images/logo.jpg">
+<h1>Challenge Mode</h1>
+
+</header>
+
+<nav>
+
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="Challanges.html">Challenges</a>
+<a href="quiz.html">Quiz</a>
+<a href="techniques.html">Techniques</a>
+<a href="resources.html">Resources</a>
+
+</div>
+
+</nav>
+
+<main class="section">
+
+<div class="quiz-layout">
+
+<div class="ollie-panel">
+
+<img src="images/ollie.png">
+
+<div class="ollie-message">
+
+<h3>🦉 Ollie Says...</h3>
+
+<p id="ollieText">Start your first challenge.</p>
+
+</div>
+
+</div>
+
+<div class="challenge-container">
+
+<div class="level-box">
+Level: <span id="level">1</span> | XP: <span id="xp">0</span>
+</div>
+
+<div class="progress-box">
+Challenges Completed: <span id="progress">0</span>
+</div>
+
+<div class="badge-box">
+Badges: <span id="badges">None yet</span>
+</div>
+
+<div id="challenges"></div>
+
+</div>
+
+</div>
+
+</main>
+
+<script>
+
+/* FULL CHALLENGE POOL (30+) */
+let pool = [
+"🧠 Active Recall Sprint",
+"⏰ Pomodoro x3",
+"📚 Flashcards 20",
+"✍️ Blurting",
+"📋 Practice Test",
+"👨‍🏫 Teach Someone",
+"🗺️ Mind Map",
+"🔁 Spaced Review",
+"🎯 Focus Session",
+"📓 Cornell Notes",
+"⏱️ Exam Simulation",
+"📖 Reflection",
+"🧾 Summary Writing",
+"🧩 Chunking",
+"❓ Self Quiz",
+"📊 Past Paper",
+"🎨 Dual Coding",
+"🔍 Error Review",
+"🧠 Mnemonics",
+"📅 Study Plan",
+"🎯 Goal Setting",
+"⏳ Timed Revision",
+"🧠 Memory Drill",
+"🔁 Revision Cycle",
+"📚 Topic Mapping",
+"⚡ Speed Practice",
+"🧪 Exam Simulation Plus",
+"📌 Key Notes",
+"🗣️ Explain Aloud",
+"🧠 Deep Focus Block"
+];
+
+/* ACTIVE GAME STATE */
+let active = JSON.parse(localStorage.getItem("active")) || [];
+let completed = JSON.parse(localStorage.getItem("completed")) || [];
+let xp = parseInt(localStorage.getItem("xp")) || 0;
+
+/* KEEP ALWAYS 10 ACTIVE CHALLENGES */
+function fillActive(){
+while(active.length < 10){
+let available = pool.filter(x => !active.includes(x));
+let random = available[Math.floor(Math.random() * available.length)];
+if(random) active.push(random);
+}
+}
+
+/* LEVEL SYSTEM (RESET AT 30) */
+function getLevel(){
+let level = Math.floor(xp / 50) + 1;
+
+if(level > 30){
+xp = 0;
+active = [];
+completed = [];
+localStorage.clear();
+fillActive();
+return 1;
+}
+
+return level;
+}
+
+/* RENDER SCREEN */
+function render(){
+
+let container = document.getElementById("challenges");
+container.innerHTML = "";
+
+fillActive();
+
+let level = getLevel();
+
+/* UPDATE STATS */
+document.getElementById("xp").innerText = xp;
+document.getElementById("level").innerText = level;
+document.getElementById("progress").innerText = completed.length;
+
+/* BADGES */
+let badges = [];
+
+if(completed.length >= 3) badges.push("🔥 Starter");
+if(completed.length >= 6) badges.push("💪 Consistent");
+if(completed.length >= 10) badges.push("🧠 Focus Master");
+
+document.getElementById("badges").innerText =
+badges.length ? badges.join(", ") : "None yet";
+
+/* RENDER 10 CHALLENGES */
+active.forEach((task, i) => {
+
+container.innerHTML += `
+<details class="challenge-card">
+<summary>${task}</summary>
+
+<div class="challenge-content">
+<div class="challenge-item">
+
+<input type="checkbox" onchange="completeTask(${i})">
+<label>Complete this challenge</label>
+
+</div>
+</div>
+
+</details>
+`;
+
+});
+
+updateOllie(level, completed.length);
+
+}
+
+/* COMPLETE + REPLACE SYSTEM */
+function completeTask(i){
+
+let task = active[i];
+
+if(!completed.includes(task)){
+
+completed.push(task);
+xp += 15;
+
+/* REMOVE AND REPLACE */
+active.splice(i, 1);
+
+let available = pool.filter(x => !active.includes(x));
+let newTask = available[Math.floor(Math.random() * available.length)];
+
+if(newTask) active.push(newTask);
+}
+
+/* SAVE */
+localStorage.setItem("active", JSON.stringify(active));
+localStorage.setItem("completed", JSON.stringify(completed));
+localStorage.setItem("xp", xp);
+
+render();
+
+}
+
+/* OLLIE MESSAGES */
+function updateOllie(level, count){
+
+let msg = "Start your first challenge.";
+
+if(count > 0) msg = "Keep going — consistency builds skill.";
+if(level > 2) msg = "You are improving fast.";
+if(level > 5) msg = "Strong learner behaviour detected.";
+
+document.getElementById("ollieText").innerText = msg;
+
+}
+
+/* START */
+render();
+
+</script>
+
+</body>
+</html>

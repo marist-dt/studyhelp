@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<!-- Declares this document as an HTML5 document -->
+
+<html>
+<!-- Root element that contains the entire webpage -->
+
+<head>
+
+<!-- Sets the character encoding so text displays correctly -->
+<meta charset="UTF-8">
+
+<!-- Makes the website responsive on phones, tablets and desktops -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Title shown on the browser tab -->
+<title>Study Techniques</title>
+
+<!-- Links the external CSS stylesheet -->
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* ==========================================
+   PAGE HEADER
+========================================== */
+
+/* Styles the header section */
+header {
+text-align: center;
+padding: 20px;
+background: #F7F0E4;
+}
+
+/* ==========================================
+   TECHNIQUES SECTION
+========================================== */
+
+/* Container that holds all technique cards */
+.techniques-container{
+    flex:3;
+}
+
+/* Individual expandable technique card */
+.technique-card{
+    background:white;
+    margin-bottom:20px;
+    border-radius:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    border:3px solid white;
+    transition:0.3s;
+    overflow:hidden;
+}
+
+/* Hover animation */
+.technique-card:hover{
+    border:3px solid #F2B35D;
+    transform:translateY(-3px);
+}
+
+/* Clickable heading */
+.technique-card summary{
+    padding:20px;
+    cursor:pointer;
+    font-size:1.1rem;
+    font-weight:bold;
+    list-style:none;
+}
+
+/* Removes the default browser arrow */
+.technique-card summary::-webkit-details-marker{
+    display:none;
+}
+
+/* Displays a plus sign when closed */
+.technique-card summary::after{
+    content:"➕";
+    float:right;
+}
+
+/* Changes the icon to a minus when opened */
+.technique-card[open] summary::after{
+    content:"➖";
+}
+
+/* Content inside each expandable card */
+.technique-content{
+    padding:0 25px 25px;
+}
+
+/* Paragraph spacing */
+.technique-content p{
+    margin-top:12px;
+    line-height:1.7;
+}
+
+/* Bullet list styling */
+.technique-content ul{
+    padding-left:20px;
+    margin-top:10px;
+}
+
+/* Space between each bullet */
+.technique-content li{
+    margin-bottom:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ==========================================
+     HEADER
+========================================== -->
+
+<header>
+
+<!-- Holds the logo and page title -->
+<div class="header-container">
+
+<!-- Logo section -->
+<div class="logo-area">
+
+<!-- Website logo -->
+<img src="images/logo.jpg" alt="Study Help Logo">
+
+<!-- Page heading -->
+<h1>Techniques</h1>
+
+</div>
+
+</header>
+
+<!-- ==========================================
+     NAVIGATION BAR
+========================================== -->
+
+<nav>
+
+<!-- Container for navigation links -->
+<div class="nav-links">
+
+<!-- Links to each page of the website -->
+<a href="index.html">Home</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="Challanges.html">Challenges</a>
+<a href="quiz.html">Quiz</a>
+<a href="techniques.html">Techniques</a>
+<a href="resources.html">Resources</a>
+
+</div>
+
+</nav>
+
+<!-- ==========================================
+     MAIN CONTENT
+========================================== -->
+
+<main class="section">
+
+<!-- Creates the two-column layout -->
+<div class="quiz-layout">
+
+<!-- ==========================================
+     OLLIE SIDEBAR
+========================================== -->
+
+<div class="ollie-panel">
+
+<!-- Ollie mascot image -->
+<img src="images/ollie.png" alt="Ollie the Owl">
+
+<!-- Ollie's speech bubble -->
+<div class="ollie-message">
+
+<!-- Sidebar heading -->
+<h3>🦉 Ollie Says...</h3>
+
+<!-- Welcome message -->
+<p>
+Welcome to the Study Techniques Library!
+</p>
+
+<!-- Instructions for users -->
+<p>
+Click any technique to learn what it is, how to use it, and why it works.
+</p>
+
+<!-- Explains the purpose of the page -->
+<p>
+Discover proven study strategies that can help you learn more effectively, remember information longer, and improve your confidence.
+The most successful students combine several techniques rather than relying on only one method.
+</p>
+
+</div>
+
+</div>
+
+<!-- ==========================================
+     TECHNIQUES LIBRARY
+========================================== -->
+
+<div class="techniques-container">
+
+<!-- ==========================================
+     Technique 1 - Active Recall
+========================================== -->
+
+<details class="technique-card">
+
+<!-- Clickable card title -->
+<summary>🧠 Active Recall</summary>
+
+<!-- Hidden content shown when expanded -->
+<div class="technique-content">
+
+<!-- Explains what Active Recall is -->
+<p><strong>What is it?</strong></p>
+
+<p>
+Active Recall is a learning technique where you try to remember information without looking at your notes. Instead of rereading, you force your brain to retrieve information from memory.
+</p>
+
+<!-- Instructions -->
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Read a section of notes.</li>
+<li>Close your notes.</li>
+<li>Write down everything you remember.</li>
+<li>Check your notes for anything you missed.</li>
+<li>Repeat regularly.</li>
+</ul>
+
+<!-- Why the technique works -->
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Retrieving information strengthens memory pathways in the brain. The more often you recall information, the easier it becomes to remember during assessments.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 2 - Spaced Repetition
+========================================== -->
+
+<details class="technique-card">
+
+<!-- Clickable card title -->
+<summary>⏰ Spaced Repetition</summary>
+
+<div class="technique-content">
+
+<!-- Explains the technique -->
+<p><strong>What is it?</strong></p>
+
+<p>
+Spaced Repetition involves reviewing information multiple times over increasing periods of time rather than cramming everything into one session.
+</p>
+
+<!-- Instructions -->
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Study a topic today.</li>
+<li>Review tomorrow.</li>
+<li>Review again after three days.</li>
+<li>Review after one week.</li>
+<li>Review after two weeks.</li>
+</ul>
+
+<!-- Why it works -->
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Reviewing information before you completely forget it helps move knowledge into long-term memory and improves retention.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 3 - Pomodoro Technique
+========================================== -->
+
+<details class="technique-card">
+
+<!-- Clickable card title -->
+<summary>🍅 Pomodoro Technique</summary>
+
+<div class="technique-content">
+
+<!-- Explains the technique -->
+<p><strong>What is it?</strong></p>
+
+<p>
+The Pomodoro Technique is a time-management strategy that breaks study into short periods of focused work followed by short breaks.
+</p>
+
+<!-- Instructions -->
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Study for 25 minutes.</li>
+<li>Take a 5-minute break.</li>
+<li>Repeat four times.</li>
+<li>Take a longer break of 15–30 minutes.</li>
+</ul>
+
+<!-- Why it works -->
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Short study sessions help maintain concentration and prevent mental fatigue.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 4 - Feynman Technique
+========================================== -->
+
+<details class="technique-card">
+
+<summary>👨‍🏫 Feynman Technique</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+The Feynman Technique involves explaining a concept using simple language as if you were teaching it to someone younger.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Choose a topic.</li>
+<li>Explain it in simple words.</li>
+<li>Identify parts you cannot explain.</li>
+<li>Study those areas again.</li>
+<li>Repeat until the explanation is clear.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Teaching requires deep understanding and quickly reveals gaps in your knowledge.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 5 - Interleaving
+========================================== -->
+
+<details class="technique-card">
+
+<summary>🔀 Interleaving</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Interleaving means mixing different topics or subjects during one study session instead of focusing on only one topic.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Study Topic A.</li>
+<li>Switch to Topic B.</li>
+<li>Move to Topic C.</li>
+<li>Return to Topic A later.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+It improves your ability to choose the correct strategy when solving different types of problems.
+</p>
+
+</div>
+
+</details>
+<!-- ==========================================
+     Technique 6 - Mind Mapping
+========================================== -->
+
+<details class="technique-card">
+
+<summary>🗺️ Mind Mapping</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Mind maps are visual diagrams that show how ideas and concepts connect to each other.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Place the main topic in the centre.</li>
+<li>Create branches for key ideas.</li>
+<li>Add supporting details.</li>
+<li>Use colours and images.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Mind maps help organise information and improve understanding of relationships between concepts.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 7 - Flashcards
+========================================== -->
+
+<details class="technique-card">
+
+<summary>🃏 Flashcards</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Flashcards are study cards that contain questions on one side and answers on the other.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Create questions from your notes.</li>
+<li>Test yourself regularly.</li>
+<li>Separate cards into easy and difficult groups.</li>
+<li>Review difficult cards more often.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Flashcards combine Active Recall and Spaced Repetition, making them one of the most effective study tools.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 8 - Blurting
+========================================== -->
+
+<details class="technique-card">
+
+<summary>✍️ Blurting</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Blurting involves writing everything you remember about a topic onto a blank page from memory.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Study a topic.</li>
+<li>Put your notes away.</li>
+<li>Write everything you remember.</li>
+<li>Compare your answers with your notes.</li>
+<li>Review what you missed.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+It highlights knowledge gaps and strengthens recall.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 9 - Cornell Notes
+========================================== -->
+
+<details class="technique-card">
+
+<summary>📓 Cornell Notes</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Cornell Notes is a structured note-taking system that divides a page into notes, cues, and summary sections.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Take notes during learning.</li>
+<li>Write key questions in the cue column.</li>
+<li>Summarise the page at the bottom.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+It improves organisation and makes revision easier.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 10 - Dual Coding
+========================================== -->
+
+<details class="technique-card">
+
+<summary>🎨 Dual Coding</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Dual Coding combines words and visuals to help your brain process information through multiple pathways.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Add diagrams to notes.</li>
+<li>Use timelines and flowcharts.</li>
+<li>Include labelled images.</li>
+<li>Connect visuals to written explanations.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Using both visual and verbal information improves understanding and memory.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 11 - Practice Testing
+========================================== -->
+
+<details class="technique-card">
+
+<summary>📋 Practice Testing</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Practice Testing involves answering questions, quizzes, and past papers before an assessment.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Find practice questions or past papers.</li>
+<li>Answer questions without looking at notes.</li>
+<li>Mark your answers honestly.</li>
+<li>Review mistakes.</li>
+<li>Repeat regularly.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Practice testing strengthens memory, improves exam confidence, and identifies weak areas.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 12 - Elaboration
+========================================== -->
+
+<details class="technique-card">
+
+<summary>❓ Elaboration</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Elaboration involves asking questions and connecting new knowledge with what you already know.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Ask "Why?" questions.</li>
+<li>Ask "How?" questions.</li>
+<li>Look for real-life examples.</li>
+<li>Connect ideas together.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Thinking deeply about information improves understanding and memory.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 13 - Chunking
+========================================== -->
+
+<details class="technique-card">
+
+<summary>🧩 Chunking</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Chunking breaks large amounts of information into smaller, manageable groups.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Group related information together.</li>
+<li>Create categories.</li>
+<li>Learn one chunk at a time.</li>
+<li>Combine chunks later.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+The brain remembers smaller groups more easily than long lists of facts.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 14 - Goal Setting
+========================================== -->
+
+<details class="technique-card">
+
+<summary>🎯 Goal Setting</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Goal Setting means creating clear objectives for each study session.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Set specific goals.</li>
+<li>Make goals realistic.</li>
+<li>Track progress.</li>
+<li>Celebrate achievements.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Goals provide motivation, direction and focus.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 15 - Study Scheduling
+========================================== -->
+
+<details class="technique-card">
+
+<summary>📅 Study Scheduling</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Study Scheduling involves planning your study sessions ahead of time.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Create a timetable.</li>
+<li>Assign subjects to different days.</li>
+<li>Schedule breaks.</li>
+<li>Review and adjust regularly.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Planning reduces stress and prevents last-minute cramming.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 16 - Error Analysis
+========================================== -->
+
+<details class="technique-card">
+
+<summary>🔍 Error Analysis</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Error Analysis means reviewing mistakes to understand why they happened.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Review incorrect answers.</li>
+<li>Identify mistakes.</li>
+<li>Write corrections.</li>
+<li>Practise similar questions.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Learning from mistakes helps prevent repeating them.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 17 - Teaching Others
+========================================== -->
+
+<details class="technique-card">
+
+<summary>🗣️ Teaching Others</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Teaching Others involves explaining concepts to another person.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Choose a topic.</li>
+<li>Explain it clearly.</li>
+<li>Answer questions.</li>
+<li>Identify knowledge gaps.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Teaching reinforces understanding and strengthens memory.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 18 - Exam Simulation
+========================================== -->
+
+<details class="technique-card">
+
+<summary>⏱️ Exam Simulation</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Exam Simulation involves practising under real exam conditions.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Set a timer.</li>
+<li>Work without notes.</li>
+<li>Complete the assessment.</li>
+<li>Mark your work.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+It improves confidence, timing and exam readiness.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 19 - Reflection Journal
+========================================== -->
+
+<details class="technique-card">
+
+<summary>📖 Reflection Journal</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+A Reflection Journal records your study progress and areas for improvement.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Write after studying.</li>
+<li>Record successes.</li>
+<li>Identify challenges.</li>
+<li>Plan improvements.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+Reflection helps improve study habits over time.
+</p>
+
+</div>
+
+</details>
+
+<!-- ==========================================
+     Technique 20 - Mnemonics
+========================================== -->
+
+<details class="technique-card">
+
+<summary>🎵 Mnemonics</summary>
+
+<div class="technique-content">
+
+<p><strong>What is it?</strong></p>
+
+<p>
+Mnemonics use acronyms, rhymes or memorable phrases to help remember information.
+</p>
+
+<p><strong>How do I use it?</strong></p>
+
+<ul>
+<li>Create acronyms.</li>
+<li>Use rhymes.</li>
+<li>Create memorable phrases.</li>
+<li>Connect ideas to images.</li>
+</ul>
+
+<p><strong>Why does it work?</strong></p>
+
+<p>
+The brain remembers meaningful patterns more easily than isolated facts.
+</p>
+
+</div>
+
+</details>
+
+</div>
+
+</div>
+
+</main>
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer>
+
+<!-- Website footer message -->
+<p>
+Study Help • Created to empower students through effective learning strategies
+</p>
+
+</footer>
+
+</body>
+
+</html>
